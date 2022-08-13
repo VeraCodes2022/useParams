@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
+import Home from './Home';
+import Detail from './Detail';
+
 
 function App() {
+  const data=[
+    {title:'HTML', content:'HTML Course 20 Hours'},
+    {title:'CSS', content:'CSS Course 22 Hours'},
+    {title:'JavaScript', content:'JavaScript Course 200 Hours'},
+    {title:'React', content:'React Course 200 Hours'},
+    {title:'Vue', content:'Vue Course 200 Hours'},
+    {title:'Angular', content:'Angular Course 200 Hours'}
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' exact="true" element={<Home data={data}/>}></Route>
+        <Route path='/detail/:title'  element={<Detail data={data}/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
